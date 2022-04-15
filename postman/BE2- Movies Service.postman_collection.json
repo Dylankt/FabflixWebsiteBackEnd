@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "f5ad8e64-42ab-4627-bb9b-718ed45427d8",
+		"name": "BE2: Movies Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Movie By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/movie/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"movie",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/movie/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"movie",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "director",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "genre",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "orderBy",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "direction",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Search by Person ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/movie/search/person/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"movie",
+						"search",
+						"person",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "orderBy",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "direction",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"movieIds\": [\r\n        \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/person/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"person",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person Search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"movieIds\": [\r\n        \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/person/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"person",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthday",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "movieTitle",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "orderBy",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "direction",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{admin_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "admin_token",
+			"value": "eyJraWQiOiJjZWI1YmUyMi0yN2FhLTQzMzEtOWFjZi1mYjlhOThiNjQzZjMiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJzdWIiOiJBZG1pbkBleGFtcGxlLmNvbSIsImlkIjoxLCJleHAiOjAsImlhdCI6MCwicm9sZXMiOlsiQURNSU4iXX0.uh3jMc6eBrlQ3qmrNSCuEC0bdOMsJPfa7l_jZ5Kd8u-A5yV0d0SdxSUr_drkeIVSAbO5qRTUUFvlveDZjdYtXA"
+		},
+		{
+			"key": "employee_token",
+			"value": "eyJraWQiOiJjZWI1YmUyMi0yN2FhLTQzMzEtOWFjZi1mYjlhOThiNjQzZjMiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJzdWIiOiJFbXBsb3llZUBleGFtcGxlLmNvbSIsImlkIjoyLCJleHAiOjAsImlhdCI6MCwicm9sZXMiOlsiRU1QTE9ZRUUiXX0.KCQ0H5g4A4bOCiFdHnNPn5TJ7dytnCqz4GlGabHRfCYwAhcpTtJyd_lQ-4gLgnZaRRxtAFl5UPRqMB4ry6jGtA"
+		},
+		{
+			"key": "premium_token",
+			"value": "eyJraWQiOiJjZWI1YmUyMi0yN2FhLTQzMzEtOWFjZi1mYjlhOThiNjQzZjMiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJzdWIiOiJQcmVtaXVtQGV4YW1wbGUuY29tIiwiaWQiOjMsImV4cCI6MCwiaWF0IjowLCJyb2xlcyI6WyJQUkVNSVVNIl19.HBdaFIKWmWtS7HKYJ26nbJJUaZCFZKhWFOXk3AXpJysj3oCNw5czZoz0jcJVJtXpiwr_slwzGscrxPaC7drfcQ"
+		}
+	]
+}
