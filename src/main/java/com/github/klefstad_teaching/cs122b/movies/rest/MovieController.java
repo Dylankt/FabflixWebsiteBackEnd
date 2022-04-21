@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.sql.Types;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 public class MovieController
@@ -38,8 +39,9 @@ public class MovieController
     public ResponseEntity<SearchResponse> search(@AuthenticationPrincipal @NotNull SignedJWT user, SearchRequest request) throws ParseException {
         List<String> roles = user.getJWTClaimsSet().getStringListClaim(JWTManager.CLAIM_ROLES);
         boolean privileged = false;
+        System.out.print(roles);
         for (String role : roles) {
-            if (role.equals("Admin") || role.equals("Employee")) {
+            if (role.toLowerCase(Locale.ROOT).equals("admin") || role.toLowerCase(Locale.ROOT).equals("employee")) {
                 privileged = true;
                 break;
             }
@@ -85,14 +87,19 @@ public class MovieController
                 SQL.append(" AND");
             } else {
                 SQL.append(" WHERE");
+                whereAdded = true;
             }
             SQL.append(" g.name LIKE :genre");
             source.addValue("genre", "%" + request.getGenre() + "%", Types.VARCHAR);
         }
         if (!privileged) {
-            SQL.append(" AND m.hidden = false");
+            if (whereAdded) {
+                SQL.append(" AND m.hidden = false");
+            } else {
+                SQL.append(" WHERE m.hidden = false");
+            }
         }
-        SQL.append(" GROUP BY m.id, m.title, m.year, p.name, m.rating, m.backdrop_path, m.poster_path, m.hidden");
+        SQL.append(" GROUP BY m.id, m.title, m.year, p.name, m.rating, m.backdrop_path, m.poster_path");
         MovieOrderBy orderBy = MovieOrderBy.fromString(request.getOrderBy());
         SQL.append(orderBy.toSQL());
         MovieDirection direction = MovieDirection.fromString(request.getDirection());
