@@ -5,13 +5,13 @@ import com.github.klefstad_teaching.cs122b.core.result.MoviesResults;
 
 import java.util.Locale;
 
-public enum MovieDirection {
+public enum Direction {
     ASC(" ASC"),
     DESC(" DESC");
 
     private final String sql;
 
-    MovieDirection(String sql) {
+    Direction(String sql) {
         this.sql = sql;
     }
 
@@ -19,7 +19,7 @@ public enum MovieDirection {
         return sql;
     }
 
-    public static MovieDirection fromString(String direction) {
+    public static Direction fromString(String direction) {
         if (direction == null) {
             return ASC;
         }
